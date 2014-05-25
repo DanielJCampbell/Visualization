@@ -103,6 +103,13 @@ function parseScore(score, i) {
 //and converting the result to an object
 function parseDate(date, i) {
 	var d = date.replace(",").split(" ");
+	var ind;
+
+	if (i == 1) {
+		ind = d[2].indexOf("undefined");
+		d[2] = d[2].slice(0,ind);
+	}
+	
 	return {
 		year:    2008 + i,
 		month:   d[2],
