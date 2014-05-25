@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+div {
+	font-size: 12px sans-serif;
+	color: white;
+	background-color: steelblue;
+	padding: 5px;
+	margin: 1px;
+}
+
+.svg, .graph, .outer {
+	color: steelblue;
+	background-color: white;
+}
+
+.text {
+	padding: 0px;
+	margin: 0px;
+	padding-bottom: 0.1px;
+	position: relative;
+	top: -20px;
+}
+
+
+
+</style>
+<html>
+	<head>
+		<title> ANZ Netball Championship Data Visualizer </title>
+		<script src = "d3.min.js"></script>
+	</head>
+	<body>
+		<div class = "outer" style = "border: 2px solid; border-style: solid; border-radius: 15px;">
+		<div class = "inputs" style = "border: 2px solid; border-style: solid; border-radius: 15px;">
+			<div id = "Upper" style = "padding-bottom: 10px;">
+				<div style = "width: 30%; float: left; margin: 0 auto;">
+					<label for = "Attractors">Attractors: </label>
+					<select id = "Attractors" onchange = "setAttract()">
+						<option selected value = "Sum">Total Score</option>
+						<option value = "Win">Winner's Score</option>
+						<option value = "Lose">Loser's Score</option>
+						<option value = "Diff">Score Difference</option>
+						<option value = "None">None </option>
+					</select>
+				</div>
+				<div style = "width: 30%; margin: 0 auto; float: left;">
+					<label for = "Repulsors">Repulsors: </label>
+					<select id = "Repulsors" onchange = "setRepulse()">
+						<option selected value = "None">None </option>
+						<option value = "Sum">Total Score</option>
+						<option value = "Win">Winner's Score</option>
+						<option value = "Lose">Loser's Score</option>
+						<option value = "Diff">Score Difference</option>
+					</select>
+				</div>
+				<div style = "width: 30%; float: right; margin: 0 auto;">
+					<label for = "Time">Time Scale: </label>
+					<select id = "Time" onchange = "changeTimeScale()">
+						<option selected value = "Season">Season</option>
+						<option value = "Round">Round</option>
+						<option value = "None">None </option>
+					</select>
+				</div>
+				<br style="clear: left;" />
+			</div>
+			<div id = "Lower" style = "border-top: 2px solid; border-top-style: solid; padding-top: 10px;">
+				<div style = "width: 50%; margin: 0 auto; text-align: center;">
+					<label for = "Scale" id = "ScaleLabel">Season: </label>
+					<input type = "range" id = "Scale" min = 0 max = 5 value = 0 onchange = "changeTime()"></input>
+				</div>
+			</div>
+		</div>
+		<div class = "graph">
+			<div id = "canvas" class = "svg" style = "float: left; width: 75%; height: 450px; border: 2px; border-style: solid; border-radius: 15px;">
+				<svg width = "100%" height = "100%"></svg>
+			</div>
+			<div class = "info" style = "float: right; border: 2px; border-style: solid; border-radius: 15px; width: 20%; height: 450px; ">
+				<p style = "text-align: center; font-weight: bold; text-decoration: underline;"> MATCH DETAILS </p><br>
+				<div style = "position: relative; top: 5px; left: 5px;">
+					<div class = "text"><p id = "Round"><u>Round:</u></p></div>
+					<div class = "text"><p id = "Date"><u>Date:</u></p></div>
+					<div class = "text"><p id = "Home"><u>Home Team:</u></p></div>
+					<div class = "text"><p id = "Away"><u>Away Team:</u></p></div>
+					<div class = "text"><p id = "Score"><u>Score:</u></p></div>
+					<div class = "text"><p id = "Venue"><u>Venue:</u></p></div>
+				</div>
+			</div>
+			<br style="clear: left;" />
+		</div>
+		<div class = "filters" style = "border: 2px solid; border-style: solid; border-radius: 15px;">
+		</div>
+		</div>
+		<script src = "netball.js"> </script>
+	</body>
+</html>
