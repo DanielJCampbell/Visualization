@@ -448,7 +448,6 @@ function setColour(data, index) {
 }
 
 function displayData(data, index) {
-	console.log(data);
 	document.getElementById("Round").innerHTML = "<u>Round:</u>   " + data.Round;
 	document.getElementById("Date").innerHTML = "<u>Date:</u>   " + displayDate(data.Date);
 	document.getElementById("Home").innerHTML = "<u>Home Team:</u>   " + data.HomeTeam;
